@@ -1,0 +1,142 @@
+@CHARSET "UTF-8";
+@font-face{
+	font-family: chatfont;
+	src: url("../font/sansation_light.ttf") format("truetype");
+	font-weight: normal;
+    font-style: normal;
+}
+
+::-webkit-scrollbar {
+   width:10px;
+   margin-right:2px
+}
+::-webkit-scrollbar:horizontal {
+   height:10px;
+   margin-bottom:2px
+}
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+::-webkit-scrollbar-track-piece {
+    background-color: #333333;
+   border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+   width:10px;
+    border-radius: 5px;
+    background: #CBCBCB; 
+}
+::-webkit-scrollbar-thumb:hover {
+   background: #909090; 
+}
+
+body{
+	width: 900px;
+	min-height: 980px;
+	background-color: #222;
+	margin: 10px auto;
+	border:3px solid;
+	border-radius:20px;
+}
+.viewdiv{
+	height: 740px;
+	overflow-y: auto;
+}
+.viewdiv dl{
+	height: 120px;
+	width: 800px;
+	margin: 20px 50px;
+}
+.viewdiv dl dd{
+	min-width: 120px;
+	min-height: 120px;
+	float: left;
+	margin: 0 auto;
+}
+.viewdiv dl dd img{
+	height: 70px;
+	width: 70px;
+	margin: 15px 10px 0 25px;
+	border:1px solid #fff;
+	border-radius:10px;
+}
+.viewdiv dl dd p{
+	height: 30px;
+	width: 70px;
+	margin: 0 auto;
+	font-family: chatfont;
+	color: white;
+}
+.viewdiv dl img{
+	float: left;
+	height:15px;
+	width: 15px;
+	margin-top: 30px;
+}
+.viewdiv dl #content{
+	float: left;
+	min-width: 58px;
+	min-height: 40px;
+	font-family: chatfont;
+	color: white;
+	background-image: url(../img/chatbg/1.png);
+	background-size: cover;
+	border:3px solid;
+	border-radius:15px;
+	font-size: 150%;
+	padding: 3px 7px;
+	margin-top:15px;
+}
+.viewdiv .me{
+	margin-right: 20px;
+}
+.viewdiv .me dd{
+	float: right;
+}
+.viewdiv .me img{
+	float: right;
+}
+.viewdiv .me #content{
+	float: right;
+}
+.viewdiv .me dd p{
+	margin-left: 40px;
+}
+.postdiv{
+	height: 140px;
+	width: 900px;
+	margin: 30px 0 20px 0;
+}
+.postdiv dl{
+	width: 850px;
+	height: 130px;
+	margin: auto;
+}
+.postdiv dl dd .postbutton{
+	width: 108px;
+	height: 106px;
+	margin: 15px 0;
+	float: left;
+	border:2px solid #fff;
+	border-radius:15px;
+	font-family: chatfont;
+	font-size: 200%;
+	background-image: url(../img/chatbg/2.png);
+	background-size: cover;
+}
+.postdiv dl dd #posttextarea{
+	height: 100px;
+	width: 600px;
+	margin: 15px 10px;
+	resize: none;
+	background-color: #222;
+	color: white;
+	font-family: chatfont;
+	border:1px solid;
+	border-radius:10px;
+	font-size: 150%;
+	padding: 3px 7px;
+}
+hr{
+	height:3px;border:none;border-top:3px solid #000;
+}

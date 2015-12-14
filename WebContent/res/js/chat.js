@@ -15,6 +15,13 @@ function send_message() {
 
 }
 
+jQuery.fn.extend({
+	enter: function(fn){
+		$(this).bind('keydown',function(event){var e = event || window.event;if(!e.ctrlKey && e.keyCode ==13){if(typeof(fn)!='undefined')fn.call(this)}});
+		return this;
+	}
+});
+
 function onOpen(evt) {
     console.log("Connected to Endpoint!");
 }
@@ -58,6 +65,12 @@ send_message();
 
 $(document).ready(function(){
 	$(".postbutton").click(function(){
+		var message = $("#posttextarea").val();
+		doSend(message);
+		$("#posttextarea").val("");
+	})
+	
+	$("#posttextarea").enter(function(){
 		var message = $("#posttextarea").val();
 		doSend(message);
 		$("#posttextarea").val("");

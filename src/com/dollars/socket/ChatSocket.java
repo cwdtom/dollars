@@ -30,6 +30,7 @@ public class ChatSocket {
         this.session = session;
         connections.add(this);
         String message = "sever#"+nickname+"#join";
+        System.out.println(message);
         broadcast(message);
     }
  
@@ -38,6 +39,7 @@ public class ChatSocket {
     public void end() {
         connections.remove(this);
         String message = "sever#"+nickname+"#close";
+        System.out.println(message);
         broadcast(message);
     }
  
@@ -46,6 +48,7 @@ public class ChatSocket {
     public void incoming(String message) {
         // Never trust the client
     	message = nickname+"#"+message+"#message";
+    	System.out.println(message);
         broadcast(message);
     }
  
@@ -62,6 +65,7 @@ public class ChatSocket {
                     // Ignore
                 }
                 String message = "sever#"+nickname+"#close";
+                System.out.println(message);
                 broadcast(message);
             }
         }

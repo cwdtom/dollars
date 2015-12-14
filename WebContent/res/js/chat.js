@@ -27,6 +27,9 @@ function onMessage(evt) {
 	if(result[2] == "join"){
 		message = message + "加入了聊天室！";
 	}
+	if(result[2] == "close"){
+		message = message + "退出了聊天室！";
+	}
 	$(".viewdiv").append("<dl>" +
 						"<dd>" +
 						"<img src=\"res/img/headimg/1.png\" id=\"headimg\" \/>" +
@@ -39,6 +42,7 @@ function onMessage(evt) {
 	$("<audio id=\"chatAudio\">" +
 	   "<source src=\"notify.mp3\" type=\"audio/mpeg\">" + 
 	   "</audio>").appendTo('body');
+	document.getElementById('div').scrollTop=document.getElementById('div').scrollHeight;
 }
 
 function onError(evt) {

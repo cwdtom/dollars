@@ -33,9 +33,9 @@
 body{
 	width: 900px;
 	min-height: 880px;
-	background-color: #222;
+	background-color: #000;
 	margin: 10px auto;
-	border:3px solid;
+	border:3px solid #555;
 	border-radius:20px;
 }
 .viewdiv{
@@ -129,7 +129,7 @@ body{
 	width: 600px;
 	margin: 15px 10px;
 	resize: none;
-	background-color: #222;
+	background-color: #000;
 	color: white;
 	font-family: chatfont;
 	border:1px solid;
@@ -138,5 +138,5 @@ body{
 	padding: 3px 7px;
 }
 hr{
-	height:3px;border:none;border-top:3px solid #000;
+	height:3px;border:none;border-top:3px solid #555;
 }

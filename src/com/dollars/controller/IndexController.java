@@ -4,15 +4,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * 聊天室控制器
+ * 首页控制器
  * @author tom
- * 2015.12.12
+ * 2015.12.14
  */
 @Controller
-public class ChatController {
+public class IndexController {
 	
-	@RequestMapping("/chat.do")
-	public String chat(){
-		return "chat";
+	@RequestMapping("/")
+	public String index(){
+		return "index";
 	}
 }

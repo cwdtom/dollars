@@ -11,6 +11,11 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+/**
+ * WebSocket¶àÈËÁÄÌì
+ * @author tom
+ * 2015.12.14
+ */
 @ServerEndpoint("/chatsocket.socket")
 public class ChatSocket {
 	private static final String GUEST_PREFIX = "Guest";

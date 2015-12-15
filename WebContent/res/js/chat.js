@@ -40,12 +40,11 @@ function onMessage(evt) {
 	if(result[2] == "close"){
 		message = message + "退出了聊天室！";
 	}
-	var headimgurl = getCookie("headimgurl");
 	var username = getCookie("username");
+	var img = "<img src="+result[3]+" id=\"headimg\" />";
 	if(nickname == username){
 		$(".viewdiv").append("<dl class=\"me\">" +
-							 "<dd>" +
-							 "<img src=\""+headimgurl+"\" id=\"headimg\" \/>" +
+							 "<dd>" +img+
 							 "<p>"+nickname+"</p>" +
 							 "</dd>" +
 							 "<img src=\"res/img/chatbg/right.png\" />" +
@@ -53,8 +52,7 @@ function onMessage(evt) {
 							 "</dl>");
 	}else{
 		$(".viewdiv").append("<dl>" +
-							"<dd>" +
-							"<img src=\""+headimgurl+"\" id=\"headimg\" \/>" +
+							"<dd>" +img+
 							"<p>"+nickname+"</p>" +
 							"</dd>" +
 							"<img src=\"res/img/chatbg/left.png\" />" +
@@ -62,9 +60,10 @@ function onMessage(evt) {
 							"</dl>");
 	}
 	
-	$("<audio id=\"chatAudio\">" +
-	   "<source src=\"notify.mp3\" type=\"audio/mpeg\">" + 
+	$("<audio autoplay=\"autoplay\">" +
+	   "<source src=\"res/sound/ding.wav\" type=\"audio/wav\">" + 
 	   "</audio>").appendTo('body');
+	
 	document.getElementById('div').scrollTop=document.getElementById('div').scrollHeight;
 }
 

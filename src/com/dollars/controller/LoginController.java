@@ -33,7 +33,7 @@ public class LoginController {
 		user = mapper.selectAllByName(user.getUserName());
 		session.close();
 		
-		if(user == null){
+		if(user == null || user.getPassWord().equals(password)){
 			model.addAttribute("error", "USERNAME OR PASSWORD INCORRECT");
 			return "index";
 		}
@@ -43,10 +43,7 @@ public class LoginController {
 		
 		Cookie cookie1=new Cookie("unique", user.getUnique());
 		resp.addCookie(cookie1);
-		
-		Cookie cookie2=new Cookie("headimgurl", user.getHeadImgUrl());
-		resp.addCookie(cookie2);
-		
+
 		return "chat";
 	}
 }

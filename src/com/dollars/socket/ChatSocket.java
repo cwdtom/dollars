@@ -11,6 +11,12 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import org.apache.ibatis.session.SqlSession;
+
+import com.dollars.dao.UserMapper;
+import com.dollars.entity.User;
+import com.dollars.mybatis.MyBatisUtil;
+
 /**
  * WebSocket∂‡»À¡ƒÃÏ
  * @author tom
@@ -67,7 +73,20 @@ public class ChatSocket {
 	    	}
     	}catch (ArrayIndexOutOfBoundsException e){
     		e.printStackTrace();
-    		message = name+"#"+message+"#message";
+    		
+    		SqlSession session = null;
+    		User user = new User();
+			try {
+				session = MyBatisUtil.getSession();
+				UserMapper mapper = session.getMapper(UserMapper.class);
+	    		user = mapper.selectAllByName(name);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}finally{
+				session.close();
+			}
+    		
+    		message = name+"#"+message+"#message#"+user.getHeadImgUrl();
 	    	System.out.println(message);
 	        broadcast(message);
     	}

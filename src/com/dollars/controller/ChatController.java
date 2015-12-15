@@ -27,6 +27,9 @@ public class ChatController {
 		String unique = "";
 		
 		//判断是否登录，没有登录直接跳转至首页
+		if(cookies == null){
+			return "index";
+		}
 		for(int i=0;i<cookies.length;i++){
 			if(cookies[i].getName().equals("username")){
 				userName = cookies[i].getValue();

@@ -24,9 +24,11 @@ public class ChatSocket {
  
     private final String nickname;
     private Session session;
+    private String name;
  
     public ChatSocket() {
-        nickname = GUEST_PREFIX + connectionIds.getAndIncrement();
+        nickname = GUEST_PREFIX;
+        System.out.println(GUEST_PREFIX + connectionIds.getAndIncrement());
     }
  
  
@@ -34,16 +36,16 @@ public class ChatSocket {
     public void start(Session session) {
         this.session = session;
         connections.add(this);
-        String message = "sever#"+nickname+"#join";
-        System.out.println(message);
-        broadcast(message);
+//        String message = "sever#"+nickname+"#join";
+//        System.out.println(message);
+//        broadcast(message);
     }
  
  
     @OnClose
     public void end() {
         connections.remove(this);
-        String message = "sever#"+nickname+"#close";
+        String message = "sever#"+name+"#close";
         System.out.println(message);
         broadcast(message);
     }
@@ -52,9 +54,23 @@ public class ChatSocket {
     @OnMessage
     public void incoming(String message) {
         // Never trust the client
-    	message = nickname+"#"+message+"#message";
-    	System.out.println(message);
-        broadcast(message);
+    	String[] key = message.split("#");
+    	try{
+	    	if(key[2].equals("connect")){
+	    		name = key[0];
+	    		String first = "sever#"+name+"#join";
+	    		broadcast(first);
+	    	}else{
+	    		message = name+"#"+message+"#message";
+		    	System.out.println(message);
+		        broadcast(message);
+	    	}
+    	}catch (ArrayIndexOutOfBoundsException e){
+    		e.printStackTrace();
+    		message = name+"#"+message+"#message";
+	    	System.out.println(message);
+	        broadcast(message);
+    	}
     }
  
  

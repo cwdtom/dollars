@@ -9,18 +9,24 @@
 </head>
 
 <body>
+	<p id="hide"></p>
 	<div class="logo">
 		<img src="res/img/logo.png" id="logo" />
 	</div>
 	
 	<div class="login">
 		<p>LOGIN</p>
-		<form action="/dollars/chat.do" method="post">
+		<form action="/dollars/login.do" method="post">
 			<dd>UserName:<input type="text" name="username" id="username" /></dd>
 			<dd>Pass Word:<input type="password" name="password" id="password" /></dd>
 			<dd><input type="submit" id="submit" value="Login"></dd>
 		</form>
 	</div>
-
+	<div class="code">
+		<p class="x">X</p>
+		<dd>Repeat PassWord:<input type="password" name="repassword" id="repassword" /></dd>
+		<dd>Access Code:&emsp;&emsp;<input type="text" name="accesscode" id="accesscode" /></dd>
+		<dd><input type="button" id="button" value="Sumbit" /></dd>
+	</div>
 </body>
 </html>

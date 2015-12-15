@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	命名空间需要与接口全类名一致
+	id需要与对应接口的方法一致
+-->
+<mapper namespace="com.dollars.dao.UserMapper">
+<!-- 
+	开启二级缓存，默认开启一级缓存 
+	需要对对象做序列化处理implements Serializable
+
+<cache></cache>
+-->
+    <select id="selectUserByName" parameterType="String" resultType="String">
+    	select u_id from d_user where u_username = #{userName}
+    </select>
+    
+    <select id="selectUserByAccessCode" parameterType="String" resultType="String">
+    	select u_id from d_user where u_accesscode = #{accessCode}
+    </select>
+
+	<insert id="insertUser" parameterType="User">
+    	insert into d_user (u_username,u_password,u_accesscode,u_unique,u_headimgurl)
+    	values (#{userName},#{passWord},#{accessCode},#{unique},#{headImgUrl})
+    </insert>
+    
+    <select id="selectUserByPassWord" parameterType="User" resultType="String">
+    	select u_unique from d_user where u_username=#{userName} and u_password=#{passWord}
+    </select>
+    
+    <select id="selectAllByName" parameterType="String" resultMap="UserMap">
+    	select * from d_user where u_username = #{userName}
+    </select>
+    <resultMap id="UserMap" type="User">
+        <id property="id" column="u_id" />
+        <result property="userName" column="u_username" />
+        <result property="passWord" column="u_password" />
+        <result property="accessCode" column="u_accesscode" />
+        <result property="unique" column="u_unique" />
+        <result property="headImgUrl" column="u_headimgurl" />
+    </resultMap>
+</mapper>

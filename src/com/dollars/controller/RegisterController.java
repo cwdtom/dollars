@@ -33,6 +33,7 @@ public class RegisterController {
 		user.setPassWord(req.getParameter("password"));
 		user.setAccessCode(req.getParameter("accesscode"));
 		String result = "";
+		SqlSession session = null;
 		
 		if(!AccessCodeUtil.isAccessCode(user.getAccessCode())){
 			result = "ERROR ACCESSCODE";
@@ -41,7 +42,7 @@ public class RegisterController {
 		}else{
 
 			//select username from user where username = username
-			SqlSession session = MyBatisUtil.getSession();
+			session = MyBatisUtil.getSession();
 			UserMapper mapper = session.getMapper(UserMapper.class);
 			String userId = mapper.selectUserByName(user.getUserName());
 			
@@ -57,10 +58,10 @@ public class RegisterController {
 				
 				//insert user (username,password,accesscode) value (username,password,accesscode)
 				mapper.insertUser(user);
-				session.close();
 				result="REGISTER IS SUCCESS";
 			}
 		}
+		session.close();
 		PrintWriter out = resp.getWriter();
 		out.print(result);
 		out.close();

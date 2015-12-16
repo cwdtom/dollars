@@ -86,6 +86,8 @@ body{
 	padding: 3px 7px;
 	margin-top:15px;
 	
+	max-width: 300px;
+	max-height: 80px;
 	animation: bomb 0.5s;
 	text-overflow: clip;
 }

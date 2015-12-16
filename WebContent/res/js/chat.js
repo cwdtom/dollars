@@ -95,6 +95,9 @@ function onError(evt) {
 
 function doSend(message) {
 	console.log("Message Sent: " + message);
+	if(message == ""){
+		return false;
+	}
     websocket.send(message);
 }
 

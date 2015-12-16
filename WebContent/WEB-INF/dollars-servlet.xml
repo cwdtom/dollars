@@ -26,8 +26,38 @@
         <property name="suffix" value=".html" />
     </bean>
     
-	<!-- 从请求和响应处读取/编写字符串 -->
+    <!-- 配置freeMarker视图解析器 -->
+    <bean id="viewResolverFtl" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+        <property name="contentType" value="text/html; charset=utf-8"/>
+        <property name="cache" value="true" />
+        <property name="suffix" value=".html" />
+        <property name="order" value="0"/>
+    </bean>
+    
+    <!-- 配置freeMarker的模板路径 -->
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath">
+        <value>/view/</value>
+        </property>
+        <property name="freemarkerVariables">
+        <map>
+            <entry key="xml_escape" value-ref="fmXmlEscape" />
+        </map>
+        </property>
+        <property name="defaultEncoding">
+            <value>utf-8</value>
+        </property>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">3600</prop>
+            </props>
+        </property>
+    </bean>
 
+    <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
+    
+	<!-- 从请求和响应处读取/编写字符串 -->
     <bean id="stringHttpMessage" class="org.springframework.http.converter.StringHttpMessageConverter">
          <property name="supportedMediaTypes">
               <list>

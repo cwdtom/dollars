@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>dallers聊天室</title>
 <link rel="stylesheet" type="text/css" href="res/css/chat.css" />
 <script type="text/javascript" src="res/js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="res/js/chat.js"></script>
+<script type="text/javascript" src="res/js/headimg.js"></script>
 </head>
 
 <body>
+	<p id="hide"></p>
 	<div class="viewdiv" id="div">
 	
 		<!-- 聊天内容显示 -->
@@ -19,6 +21,16 @@
 		<dl>
 			<dd><input type="button" value="POST" class="postbutton" /></dd>
 			<dd><textarea id="posttextarea"></textarea></dd>
+		</dl>
+	</div>
+	
+	<div id="headimgdiv">
+		<dl>
+			<p class="title">CHANGE HEADIMAGE</p>
+			<p class="x">X</p>
+		</dl>
+		<dl id="headimgdl">
+			<!-- 头像图片显示 -->
 		</dl>
 	</div>
 </body>

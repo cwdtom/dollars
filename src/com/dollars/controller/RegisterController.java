@@ -50,9 +50,9 @@ public class RegisterController {
 			}else{
 				SimpleDateFormat sdf=new SimpleDateFormat("YYYYMMdd");
 				Integer now = Integer.parseInt(sdf.format(new Date()));
-				String unique = Md5Util.md5(now+"@");
+				String unique = Md5Util.md5(now+"@"+user.getUserName());
 				user.setUnique(unique);
-				user.setHeadImgUrl("0");
+				user.setHeadImgUrl("res/img/headimg/1.png");
 				user.setPassWord(Md5Util.md5(user.getPassWord()));
 				
 				//insert user (username,password,accesscode) value (username,password,accesscode)

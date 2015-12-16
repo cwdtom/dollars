@@ -18,4 +18,13 @@ public interface UserMapper {
 	
 	//按userName查询返回User
 	public User selectAllByName(String userName);
+	
+	//按userName修改headImgUrl
+	public void updateHeadImgByName(User user);
+	
+	//按userName修改passWord
+	public void updatePassWordByName(User user);
+	
+	//按unique查找userName
+	public String selectNameByUnique(String unique);
 }

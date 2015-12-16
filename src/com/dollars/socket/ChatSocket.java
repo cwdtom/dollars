@@ -51,7 +51,7 @@ public class ChatSocket {
     @OnClose
     public void end() {
         connections.remove(this);
-        String message = "sever#"+name+"#close";
+        String message = "SERVER#"+name+"#close";
         System.out.println(message);
         broadcast(message);
     }
@@ -64,7 +64,8 @@ public class ChatSocket {
     	try{
 	    	if(key[2].equals("connect")){
 	    		name = key[0];
-	    		String first = "sever#"+name+"#join";
+	    		name = name.split("\\r\\n")[0];
+	    		String first = "SERVER#"+name+"#join";
 	    		broadcast(first);
 	    	}else{
 	    		message = name+"#"+message+"#message";

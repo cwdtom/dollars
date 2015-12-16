@@ -79,7 +79,6 @@ body{
 	min-height: 40px;
 	font-family: chatfont;
 	color: white;
-	background-image: url(../img/chatbg/1.png);
 	background-size: cover;
 	border:3px solid;
 	border-radius:15px;
@@ -121,8 +120,8 @@ body{
 	border-radius:15px;
 	font-family: chatfont;
 	font-size: 200%;
-	background-image: url(../img/chatbg/2.png);
 	background-size: cover;
+	color: #fff;
 }
 .postdiv dl dd #posttextarea{
 	height: 100px;
@@ -139,4 +138,64 @@ body{
 }
 hr{
 	height:3px;border:none;border-top:3px solid #555;
+}
+#hide{
+	background-color: #222;
+	height: 50px;
+	width: 50px;
+	float: left;
+	margin: -10px -300px;
+	border: 1px solid #111;
+    border-radius: 25px;
+    position:absolute;
+}
+#headimgdiv{
+	height: 800px;
+	width: 850px;
+	float: left;
+	position:absolute;
+	margin: -900px 30px;
+	background-color: #333;
+	border: 2px solid #222;
+    border-radius: 15px;
+    display: none;
+}
+#headimgdiv #headimgdl img{
+	float: left;
+	height: 100px;
+	width: 100px;
+	margin: 10px 10px;
+}
+#headimgdiv #headimgdl img:hover{
+	cursor: pointer;
+}
+#headimgdiv dl{
+	width: 850px;
+	height: 15px;
+	float: left;
+}
+#headimgdiv #headimgdl{
+	width: 850px;
+	height: 725px;
+	float: left;
+}
+#headimgdiv dl .title{
+	color: #fff;
+	height: 10px;
+	width: 200px;
+	float: left;
+	margin-top: 5px;
+	font-family: chatfont;
+	font-size: 120%;
+}
+#headimgdiv dl .x{
+	color: #fff;
+	height: 10px;
+	width: 10px;
+	float: left;
+	margin-top: 5px;
+	margin-left: 600px;
+}
+#headimgdiv dl .x:hover{
+	cursor: pointer;
 }

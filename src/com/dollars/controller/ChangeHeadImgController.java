@@ -5,32 +5,26 @@ import java.net.URLDecoder;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.dollars.dao.UserMapper;
+import com.dollars.entity.User;
 import com.dollars.mybatis.MyBatisUtil;
+import com.dollars.util.ResponseTools;
 
-/**
- * 聊天室控制器
- * @author tom
- * 2015.12.12
- */
 @Controller
-public class ChatController {
+public class ChangeHeadImgController {
 	
-	@RequestMapping("/chat.do")
-	public String chat(HttpServletRequest req) throws IOException{
+	@RequestMapping("/changeimg.do")
+	public void changeHeadImg(String id,HttpServletRequest req,HttpServletResponse resp) throws IOException{
 		Cookie[] cookies = req.getCookies();
 		String userName = "";
-		String unique = "";
+		User user = new User();
 		
-		//判断是否登录，没有登录直接跳转至首页
-		if(cookies == null){
-			return "index";
-		}
 		for(int i=0;i<cookies.length;i++){
 			if(cookies[i].getName().equals("username")){
 				userName = cookies[i].getValue();
@@ -38,27 +32,17 @@ public class ChatController {
 				break;
 			}
 			if(i == cookies.length-1){
-				return "index";
+				ResponseTools.setMessage(resp, "CHANGE FAIL!");
 			}
 		}
-		
-		for(int i=0;i<cookies.length;i++){
-			if(cookies[i].getName().equals("unique")){
-				unique = cookies[i].getValue();
-				break;
-			}
-			if(i == cookies.length-1){
-				return "index";
-			}
-		}
+		user.setUserName(userName);
+		user.setHeadImgUrl("res/img/headimg/"+id+".png");
 		
 		SqlSession session = MyBatisUtil.getSession();
 		UserMapper mapper = session.getMapper(UserMapper.class);
-		if(!mapper.selectAllByName(userName).getUnique().equals(unique)){
-			return "index";
-		}
+		mapper.updateHeadImgByName(user);
 		session.close();
 		
-		return "chat";
+		ResponseTools.setMessage(resp, "CHANGE SUCCESS!");
 	}
 }

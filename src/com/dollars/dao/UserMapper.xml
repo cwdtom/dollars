@@ -41,4 +41,16 @@
         <result property="unique" column="u_unique" />
         <result property="headImgUrl" column="u_headimgurl" />
     </resultMap>
+    
+    <update id="updateHeadImgByName" parameterType="User">
+    	update d_user set u_headimgurl = #{headImgUrl} where u_username = #{userName}
+    </update>
+    
+    <update id="updatePassWordByName" parameterType="User">
+    	update d_user set u_password = #{passWord} where u_username = #{userName}
+    </update>
+    
+    <select id="selectNameByUnique" parameterType="String" resultType="String">
+    	select u_username from d_user where u_unique = #{unique}
+    </select>
 </mapper>

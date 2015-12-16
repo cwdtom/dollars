@@ -187,3 +187,8 @@ body .code p{
 body .code p:hover{
 	cursor: pointer;
 }
+body #error{
+	color: red;
+	margin: auto;
+	text-align: center;
+}

@@ -85,6 +85,9 @@ body{
 	font-size: 150%;
 	padding: 3px 7px;
 	margin-top:15px;
+	
+	animation: bomb 0.5s;
+	text-overflow: clip;
 }
 .viewdiv .me{
 	margin-right: 20px;
@@ -198,4 +201,15 @@ hr{
 }
 #headimgdiv dl .x:hover{
 	cursor: pointer;
+}
+@keyframes bomb
+{
+0%   {width: 0px;}
+100% {width: 150px;}
+}
+
+@-webkit-keyframes bomb /* Safari and Chrome */
+{
+0%   {width: 0px;}
+100% {width: 150px;}
 }

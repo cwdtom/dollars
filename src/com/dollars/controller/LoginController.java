@@ -23,10 +23,16 @@ public class LoginController {
 	public String login(String username,String password,Model model,HttpServletResponse resp) throws IOException{
 		User user = new User();
 		
+		if(username == null || password == null){
+			model.addAttribute("error", "PLEASE LOGIN");
+			return "index";
+		}
+		
 		if(username.equals("") || password.equals("")){
 			model.addAttribute("error", "PLEASE ENTER YOUR USERNAME OR PASSWORD");
 			return "index";
 		}
+		
 		user.setUserName(new String(username.getBytes("iso-8859-1"),"UTF-8"));
 		password = Md5Util.md5(password);
 		user.setPassWord(password);

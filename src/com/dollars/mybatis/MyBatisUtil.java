@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class MyBatisUtil {
+	private static SqlSessionFactory sqlSessionFactory = null;
+	
 	/**
 	 * 获取连接池连接
 	 * @param Boolean commit 是否开启自动提交
@@ -16,9 +18,11 @@ public class MyBatisUtil {
 	 * @throws IOException
 	 */
 	public static SqlSession getSession(Boolean commit) throws IOException{
-		String resource = "config/conf.xml";
-		InputStream inputStream = Resources.getResourceAsStream(resource);
-		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		if(sqlSessionFactory == null){
+			String resource = "config/conf.xml";
+			InputStream inputStream = Resources.getResourceAsStream(resource);
+			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		}
 		SqlSession session = sqlSessionFactory.openSession(commit);
 		
 		return session;
@@ -30,9 +34,11 @@ public class MyBatisUtil {
 	 * @throws IOException
 	 */
 	public static SqlSession getSession() throws IOException{
-		String resource = "config/conf.xml";
-		InputStream inputStream = Resources.getResourceAsStream(resource);
-		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		if(sqlSessionFactory == null){
+			String resource = "config/conf.xml";
+			InputStream inputStream = Resources.getResourceAsStream(resource);
+			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		}
 		SqlSession session = sqlSessionFactory.openSession(true);
 		
 		return session;

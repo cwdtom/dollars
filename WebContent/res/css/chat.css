@@ -86,7 +86,7 @@ body{
 	padding: 3px 7px;
 	margin-top:15px;
 	
-	max-width: 300px;
+	max-width: 500px;
 	max-height: 80px;
 	animation: bomb 0.5s;
 	text-overflow: clip;
@@ -149,7 +149,7 @@ hr{
 	height: 50px;
 	width: 50px;
 	float: left;
-	margin: -10px -300px;
+	margin: -10px -200px;
 	border: 1px solid #111;
     border-radius: 25px;
     position:absolute;
@@ -206,12 +206,12 @@ hr{
 }
 @keyframes bomb
 {
-0%   {width: 0px;}
-100% {width: 150px;}
+0%   {width: 0px;height: 0px;}
+100% {width: 150px;height: 80px;}
 }
 
 @-webkit-keyframes bomb /* Safari and Chrome */
 {
-0%   {width: 0px;}
-100% {width: 150px;}
+0%   {width: 0px;height: 0px;}
+100% {width: 150px;height: 80px;}
 }

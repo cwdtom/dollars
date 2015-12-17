@@ -95,10 +95,24 @@ function onError(evt) {
 
 function doSend(message) {
 	console.log("Message Sent: " + message);
-	if(message == ""){
+	if(message == "" || message.search(/^[\n]+$/i) != -1){
+		alert("不能为空");
+		return true;
+	}
+	if(message.indexOf("#") != -1){
+		alert("#号是一个非法字符");
 		return false;
 	}
+	if(message.length > 36){
+		alert("单次发言请不要超过36个字");
+		return false;
+	}
+	if(message.search(/^[ ]+$/i) != -1){
+		alert("全空格发言不允许");
+		return true;
+	}
     websocket.send(message);
+    return true;
 }
 
 send_message();
@@ -106,14 +120,16 @@ send_message();
 $(document).ready(function(){
 	$(".postbutton").click(function(){
 		var message = $("#posttextarea").val();
-		doSend(message);
-		$("#posttextarea").val("");
+		if(doSend(message)){
+			$("#posttextarea").val("");
+		}
 	})
 	
 	$("#posttextarea").enter(function(){
 		var message = $("#posttextarea").val();
-		doSend(message);
-		$("#posttextarea").val("");
+		if(doSend(message)){
+			$("#posttextarea").val("");
+		}
 	})
 })
 

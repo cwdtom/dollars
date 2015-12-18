@@ -28,7 +28,7 @@ public class Md5Util {
             }
             result = buf.toString();
         } catch (NoSuchAlgorithmException e) {
-            System.out.println(e);
+            //ºöÂÔ
         }
         return result;
     }

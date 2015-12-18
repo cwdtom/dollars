@@ -16,6 +16,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.dollars.dao.UserMapper;
 import com.dollars.entity.User;
 import com.dollars.mybatis.MyBatisUtil;
+import com.sun.istack.internal.logging.Logger;
 
 /**
  * WebSocket∂‡»À¡ƒÃÏ
@@ -24,6 +25,7 @@ import com.dollars.mybatis.MyBatisUtil;
  */
 @ServerEndpoint("/chatsocket.socket")
 public class ChatSocket {
+	private static Logger logger = Logger.getLogger(ChatSocket.class);  
 	private static final String GUEST_PREFIX = "Guest";
     private static final AtomicInteger connectionIds = new AtomicInteger(0);
     private static final Set<ChatSocket> connections = new CopyOnWriteArraySet<ChatSocket>();
@@ -34,7 +36,7 @@ public class ChatSocket {
  
     public ChatSocket() {
         nickname = GUEST_PREFIX;
-        System.out.println(GUEST_PREFIX + connectionIds.getAndIncrement());
+        logger.info(GUEST_PREFIX + connectionIds.getAndIncrement());
     }
  
  
@@ -42,9 +44,6 @@ public class ChatSocket {
     public void start(Session session) {
         this.session = session;
         connections.add(this);
-//        String message = "sever#"+nickname+"#join";
-//        System.out.println(message);
-//        broadcast(message);
     }
  
  
@@ -52,7 +51,7 @@ public class ChatSocket {
     public void end() {
         connections.remove(this);
         String message = "SERVER#"+name+"#close";
-        System.out.println(message);
+        logger.info(message);
         broadcast(message);
     }
  
@@ -69,7 +68,7 @@ public class ChatSocket {
 	    		broadcast(first);
 	    	}else{
 	    		message = name+"#"+message+"#message";
-		    	System.out.println(message);
+	    		logger.info(message);
 		        broadcast(message);
 	    	}
     	}catch (ArrayIndexOutOfBoundsException e){
@@ -88,7 +87,7 @@ public class ChatSocket {
 			}
     		
     		message = name+"#"+message+"#message#"+user.getHeadImgUrl();
-	    	System.out.println(message);
+    		logger.info(message);
 	        broadcast(message);
     	}
     }
@@ -106,7 +105,7 @@ public class ChatSocket {
                     // Ignore
                 }
                 String message = "sever#"+nickname+"#close";
-                System.out.println(message);
+                logger.info(message);
                 broadcast(message);
             }
         }

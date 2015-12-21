@@ -1,16 +1,11 @@
 package com.dollars.entity;
 
-import java.io.Serializable;
-
 /**
  * 用户实体
  * @author tom
  * 2015.12.15
  */
-public class User implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
-	
+public class User{
 	private String id;
 	private String userName;
 	private String passWord;

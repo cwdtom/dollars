@@ -103,6 +103,10 @@ function doSend(message) {
 		alert("#号是一个非法字符");
 		return false;
 	}
+	if(message.indexOf("<") != -1){
+		alert("<号是一个非法字符");
+		return false;
+	}
 	if(message.length > 36){
 		alert("单次发言请不要超过36个字");
 		return false;

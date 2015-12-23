@@ -59,6 +59,7 @@ public class ChatSocket {
     @OnMessage
     public void incoming(String message) {
         // Never trust the client
+    	message = message.replace("<", "[");
     	String[] key = message.split("#");
     	try{
 	    	if(key[2].equals("connect")){

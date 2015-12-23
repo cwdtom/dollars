@@ -17,14 +17,8 @@
         <property name="url" value="${jdbcUrl}"/>
         <property name="username" value="${user}"/>
         <property name="password" value="${password}"/>
-        <!-- 初始化连接数 -->
-        <property name="initialSize" value="${initialSize}" />
-        <!-- 最大连接数 -->
-        <property name="maxActive" value="${maxActive}" />
-        <!-- 最大空闲连接数 -->
-        <property name="maxIdle" value="${maxIdle}" />
-        <!-- 最大等待秒钟数 -->
-        <property name="maxWait" value="${maxWait}" />
+        <property name="poolMaximumActiveConnections" value="${poolMaximumActiveConnections}"/>
+        <property name="poolMaximumIdleConnections" value="${poolMaximumIdleConnections}"/>
       </dataSource>
     </environment>
   </environments>

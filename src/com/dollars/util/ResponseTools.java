@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 处理Response各种工具
  * @author tom
- *
+ * 2015.12.5
  */
 public class ResponseTools {
 	/**

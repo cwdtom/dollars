@@ -1,3 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/com/dollars/controller/DownloadImgController.java=UTF-8
 encoding//src/com/dollars/controller/LoginController.java=UTF-8
+encoding//src/com/dollars/util/AesUtil.java=UTF-8
 encoding//src/log4j.properties=UTF-8
